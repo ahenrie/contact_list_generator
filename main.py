@@ -40,8 +40,8 @@ class gen_customer():
         email = first_name.lower() + random.choice(["_", "-", "."]) + last_name.lower() + random.choice(["@gmail.com", "@hotmail.com", "@aol.com", "@outlook.com"])
         street_address = "123 Main St"
         zip_code = str(random.choice(list(zip_dictionary.items())))[2:7]
-        city = zip_dictionary[zip_code]
-        state = zip_dictionary[zip_code]
+        city = zip_dictionary[zip_code]["primary_city"]
+        state = zip_dictionary[zip_code]["state"]
         customer = {
         "id": i,
         "first_name": first_name,
@@ -55,4 +55,5 @@ class gen_customer():
         customers.append(customer)
     print(self.customers)
 
-list1 = gen_customer(1)
+list1 = gen_customer(100)
+

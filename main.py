@@ -1,5 +1,6 @@
 import random
 import csv
+import names
 
 class gen_customer():
   def __init__(self, num_customers, customers = []):
@@ -36,11 +37,10 @@ class gen_customer():
 
     for i in range(num_customers):
         zipcodes = list(zip_dictionary.keys())
-        first_name = random.choice(["John", "Jane", "Michael", "Mary", "Peter", "Susan", "David", "Elizabeth", "Thomas", "Sarah"])
-        last_name = random.choice(["Doe", "Smith", "Johnson", "Williams", "Brown", "Jones", "Wilson", "Taylor", "Moore", "Thompson"])
+        first_name = names.get_random_first()
+        last_name = names.get_random_last()
         email = first_name.lower() + random.choice(["_", "-", "."]) + last_name.lower() + random.choice(["@gmail.com", "@hotmail.com", "@aol.com", "@outlook.com"])
         street_address = "123 Main St"
-        #zip_code = str(random.choice(list(zip_dictionary.items())))[2:7]
         zip_code = random.choice(zipcodes)
         city = zip_dictionary[zip_code]["primary_city"]
         state = zip_dictionary[zip_code]["state"]
@@ -57,4 +57,5 @@ class gen_customer():
         customers.append(customer)
     print(self.customers)
 
-list1 = gen_customer(10000)
+list1 = gen_customer()
+
